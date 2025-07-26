@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevate Events - Premium Event Decoration</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            animation: gradientShift 8s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); }
+            25% { background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #4facfe 100%); }
+            50% { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 50%, #43e97b 100%); }
+            75% { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 50%, #667eea 100%); }
+            100% { background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            padding: 1rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '✨';
+            position: absolute;
+            right: -25px;
+            top: -2px;
+            font-size: 1.2rem;
+        }
+
+        .nav-container {
+            display: flex;
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 4px;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 4px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #6c757d;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            padding: 8px 16px;
+            border-radius: 8px;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            color: #495057;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .nav-links a.active {
+            color: #fff;
+            background: #007bff;
+            box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3);
+        }
+
+        /* Mobile menu toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 8px 12px;
+            color: #495057;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .mobile-menu-toggle:hover {
+            background: #e9ecef;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px 20px 0 0;
+            min-height: calc(100vh - 80px);
+            box-shadow: 0 -10px 40px rgba(31, 38, 135, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .page {
+            display: none;
+            padding: 3rem 0;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(78, 205, 196, 0.1), rgba(69, 183, 209, 0.1));
+            border-radius: 20px;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientFlow 4s ease infinite, slideInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+            animation: slideInUp 1s ease 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            background-size: 200% 200%;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            animation: slideInUp 1s ease 0.4s both, gradientFlow 3s ease infinite;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4);
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Theme Grid */
+        .theme-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .theme-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+
+        .theme-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7);
+            background-size: 200% 200%;
+            animation: gradientFlow 3s ease infinite;
+        }
+
+        .theme-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .theme-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            background-size: 200% 200%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+            animation: gradientFlow 4s ease infinite;
+        }
+
+        .theme-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .theme-content {
+            padding: 1.5rem;
+        }
+
+        .theme-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .theme-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Services Section */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .service-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .service-card:hover {
+            border-color: transparent;
+            transform: translateY(-8px) scale(1.03);
+            color: white;
+        }
+
+        .service-card:hover::before {
+            opacity: 0.9;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 3rem 0;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .about-image {
+            height: 300px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            background-size: 200% 200%;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            animation: gradientFlow 5s ease infinite;
+            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.3);
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .contact-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            background-size: 200% 200%;
+            animation: gradientFlow 3s ease infinite;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.2);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 70px;
+            height: 70px;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #25d366, #128c7e);
+            color: white;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 2.2rem;
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            animation: pulse 2s infinite, float 3s ease-in-out infinite;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.15);
+            box-shadow: 0 10px 35px rgba(37, 211, 102, 0.7);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 4px 30px rgba(37, 211, 102, 0.7); }
+            100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientFlow 4s ease infinite;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 20px;
+                right: 20px;
+                background: #fff;
+                border-radius: 12px;
+                padding: 16px;
+                border: 1px solid #e9ecef;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                margin-top: 8px;
+            }
+            
+            .nav-container.active {
+                display: block;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 4px;
+            }
+            
+            .nav-links a {
+                display: block;
+                text-align: left;
+                padding: 12px 16px;
+                border-radius: 8px;
+                color: #6c757d;
+            }
+            
+            .nav-links a:hover {
+                background: #f8f9fa;
+                color: #495057;
+            }
+            
+            .nav-links a.active {
+                background: #007bff;
+                color: #fff;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .theme-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Additional Styling */
+        .highlight {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+            animation: gradientFlow 3s ease infinite;
+        }
+
+        .divider {
+            height: 3px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7);
+            background-size: 200% 200%;
+            border: none;
+            border-radius: 3px;
+            margin: 2rem 0;
+            animation: gradientFlow 4s ease infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">Elevate Events</div>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+            <div class="nav-container" id="navContainer">
+                <ul class="nav-links">
+                    <li><a href="#" onclick="showPage('home')" class="active">✨ Home</a></li>
+                    <li><a href="#" onclick="showPage('events')">🎉 Events</a></li>
+                    <li><a href="#" onclick="showPage('kids')">🎈 Kids Parties</a></li>
+                    <li><a href="#" onclick="showPage('about')">💫 About</a></li>
+                    <li><a href="#" onclick="showPage('contact')">📞 Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <div class="hero">
+                <h1>Elevate Events</h1>
+                <p>✨ Where Every Celebration Becomes a Masterpiece ✨</p>
+                <a href="#" onclick="showPage('contact')" class="cta-button">✨ Create Magic Today</a>
+            </div>
+
+            <div class="section-header">
+                <h2>Our Services</h2>
+                <p>We specialize in creating breathtaking atmospheres for all your special occasions</p>
+            </div>
+
+            <div class="services">
+                <div class="service-card">
+                    <div class="service-icon">🎉</div>
+                    <h3>Event Parties</h3>
+                    <p>Elegant decorations for weddings, corporate events, birthdays, and special celebrations</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎈</div>
+                    <h3>Kids Parties</h3>
+                    <p>Magical themed parties that bring your child's favorite characters and dreams to life</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Custom Themes</h3>
+                    <p>Bespoke decoration designs tailored to your unique vision and preferences</p>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="section-header">
+                <h2>Why Choose <span class="highlight">Elevate Events</span>?</h2>
+                <p>We bring creativity, professionalism, and magic to every celebration</p>
+            </div>
+
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>🌟 Premium Quality</h3>
+                    <p>We use only the finest materials and decorations to ensure your event looks absolutely stunning. Every detail is carefully crafted to create the perfect atmosphere.</p>
+                    
+                    <h3>🎯 Personalized Service</h3>
+                    <p>Every event is unique, and we work closely with you to understand your vision and bring it to life exactly as you imagined.</p>
+                    
+                    <h3>💝 Memorable Experiences</h3>
+                    <p>Our goal is to create moments that you and your guests will remember forever. We handle all the details so you can focus on enjoying your special day.</p>
+                </div>
+                <div class="about-image">
+                    🎪
+                </div>
+            </div>
+        </div>
+
+        <!-- Event Parties Page -->
+        <div id="events" class="page">
+            <div class="section-header">
+                <h2>Event Party Decorations</h2>
+                <p>Elegant and sophisticated themes for your special celebrations</p>
+            </div>
+
+            <div class="theme-grid">
+                <div class="theme-card">
+                    <div class="theme-image">💍</div>
+                    <div class="theme-content">
+                        <h3>Romantic Wedding</h3>
+                        <p>Create the perfect fairytale wedding with elegant floral arrangements, ambient lighting, and romantic touches that make your special day unforgettable.</p>
+                    </div>
+                </div>
+
+                <div class="theme-card">
+                    <div class="theme-image">🌹</div>
+                    <div class="theme-content">
+                        <h3>Garden Party</h3>
+                        <p>Bring the beauty of nature indoors with lush greenery, fresh flowers, and natural elements for a sophisticated garden-themed celebration.</p>
+                    </div>
+                </div>
+
+                <div class="theme-card">
+                    <div class="theme-image">✨</div>
+                    <div class="theme-content">
+                        <h3>Glamorous Gold</h3>
+                        <p>Add sparkle and luxury to your event with golden accents, metallic decorations, and elegant lighting for a truly glamorous atmosphere.</p>
+                    </div>
+                </div>
+
+                <div class="theme-card">
+                    <div class="theme-image">🎭</div>
+                    <div class="theme-content">
+                        <h3>Vintage Elegance</h3>
+                        <p>Step back in time with classic vintage decorations, antique touches, and timeless elegance for a sophisticated retro celebration.</p>
+                    </div>
+                </div>
+
+                <div class="theme-card">
+                    <div class="theme-image">🏢</div>
+                    <div class="theme-content">
+                        <h3>Corporate Events</h3>
+                        <p>Professional and polished decorations for business functions, conferences, and corporate celebrations that reflect your company's brand.</p>
+                    </div>
+                </div>
+
+                <div class="theme-card">
+                    <div class="theme-image">🎊</div>
+                    <div class="theme-content">
+                        <h3>Milestone Birthdays</h3>
+                        <p>Celebrate life's big moments with custom decorations designed specifically for milestone birthdays and life achievements.</p>
+                    </div>
+                </div>
+
+                <div class="theme-card">
+                    <div class="theme-image">🌊</div>
+                    <div class="theme-content">
+                        <h3>Beach Theme</h3>
+                        <p>Bring the seaside to your celebration with coastal colors, nautical elements, and ocean-inspired decorations.</p>
+                    </div>
+                </div>
+
+                <div class="theme-card">
+                    <div class="theme-image">🎄</div>
+                    <div class="theme-content">
+                        <h3>Holiday Celebrations</h3>
+                        <p>Festive decorations for Christmas, New Year, and other holiday celebrations that capture the spirit of the season.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kids Parties Page -->
+        <div id="kids" class="page">
+            <div class="section-header">
+                <h2>Kids Party Themes</h2>
+                <p>Magical worlds and beloved characters brought to life for your little ones</p>
+            </div>
+
+            <div class="theme-grid">
+                <div class="theme-card">
+                    <div class="theme-image">👑</div>
+                    <div class="theme-content">
+                        <h3>Princess Party</h3>
+                        <p>Transform your space into a royal castle with pink and gold decorations, crowns, and magical princess elements that every little girl dreams of.</p>
+                    </div>
+                </div>
+
+                <div class="theme-card">
+                    <div class="theme-image">🦸</div>
+                    <div class="theme-content">
+                        <h3>Superhero Adventure</h3>
+                        <p>Action-packed decorations featuring favorite superheroes with bold colors, cityscape backdrops, and heroic symbols.</p>
+                    </div>
+                </div>
+
+                <div class="theme-card">
+                    <div class="theme-image">🦄</div>
+                    <div class="theme-content">
+                        <h3>Unicorn Magic</h3>
+                        <p>Create a magical wonderland with rainbow colors, sparkles, and enchanting unicorn decorations that bring fantasy to life.</p>
+                    </div>
+                </div>
+
+                <div class="theme-card">
+                    <div class="theme-image">🦖</div>
+                    <div class="theme-content">
+                        <h3>Dinosaur Adventure</h3>
+                        <p>Journey back to prehistoric times with realistic dinosaur decorations, jungle elements, and archaeological dig setups.</p>
+                    </div>
+                </div>
+
+                <div class="theme-card">
+                    <div class="theme-image">🚗</div>
+                    <div class="theme-content">
+                        <h3>Cars & Racing</h3>
+                        <p>Speed into fun with racing-themed decorations, checkered flags, and favorite car characters for little speed demons.</p>
+                    </div>
+                </div>
+
+                <div class="theme-card">
+                    <div class="theme-image">🧚</div>
+                    <div class="theme-content">
+                        <h3>Fairy Garden</h3>
+                        <p>Enchanting forest scenes with flowers, butterflies, and magical fairy elements creating a whimsical garden party.</p>
+                    </div>
+                </div>
+
+                <div class="theme-card">
+                    <div class="theme-image">🏴‍☠️</div>
+                    <div class="theme-content">
+                        <h3>Pirate Adventure</h3>
+                        <p>Set sail for adventure with pirate ships, treasure chests, maps, and nautical decorations for brave little buccaneers.</p>
+                    </div>
+                </div>
+
+                <div class="theme-card">
+                    <div class="theme-image">🎮</div>
+                    <div class="theme-content">
+                        <h3>Gaming Party</h3>
+                        <p>Level up the fun with video game-inspired decorations, pixel art, and gaming elements for tech-savvy kids.</p>
+                    </div>
+                </div>
+
+                <div class="theme-card">
+                    <div class="theme-image">🎪</div>
+                    <div class="theme-content">
+                        <h3>Circus Spectacular</h3>
+                        <p>Step right up to the greatest show with colorful circus decorations, carnival games, and big top excitement.</p>
+                    </div>
+                </div>
+
+                <div class="theme-card">
+                    <div class="theme-image">🌙</div>
+                    <div class="theme-content">
+                        <h3>Space Adventure</h3>
+                        <p>Blast off to the stars with space-themed decorations, planets, rockets, and astronaut elements for future space explorers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Page -->
+        <div id="about" class="page">
+            <div class="section-header">
+                <h2>About Elevate Events</h2>
+                <p>Your trusted partner in creating magical moments and unforgettable celebrations</p>
+            </div>
+
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Our Story</h3>
+                    <p>Welcome to Elevate Events, where dreams come to life through the art of decoration. Founded with a passion for creating magical experiences, we specialize in transforming ordinary spaces into extraordinary celebrations.</p>
+                    
+                    <p>Led by Janesha Bachen, our team brings years of experience and creativity to every event. We believe that every celebration deserves to be special, whether it's an elegant wedding, a corporate gathering, or a child's birthday party.</p>
+                    
+                    <h3>Our Mission</h3>
+                    <p>To create enchanting experiences that exceed expectations and leave lasting memories. We are committed to bringing your vision to life with attention to detail, creativity, and professionalism.</p>
+                    
+                    <h3>What Makes Us Special</h3>
+                    <p>• <strong>Personalized Service:</strong> Every event is unique, and we tailor our approach to your specific needs and preferences.</p>
+                    <p>• <strong>Quality Materials:</strong> We use only premium decorations and materials to ensure your event looks absolutely stunning.</p>
+                    <p>• <strong>Creative Designs:</strong> Our team stays current with the latest trends while creating timeless, memorable designs.</p>
+                    <p>• <strong>Stress-Free Experience:</strong> We handle all the details so you can relax and enjoy your special day.</p>
+                </div>
+                <div class="about-image">
+                    🎨
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="section-header">
+                <h2>Our Process</h2>
+                <p>From consultation to celebration, we make the journey seamless and enjoyable</p>
+            </div>
+
+            <div class="services">
+                <div class="service-card">
+                    <div class="service-icon">💬</div>
+                    <h3>1. Consultation</h3>
+                    <p>We start with a detailed discussion about your vision, preferences, and budget to understand exactly what you're looking for.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✏️</div>
+                    <h3>2. Design & Planning</h3>
+                    <p>Our team creates a custom design plan and mood board, incorporating your ideas with our creative expertise.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛠️</div>
+                    <h3>3. Setup & Execution</h3>
+                    <p>On event day, we arrive early to transform your space, ensuring every detail is perfect before your guests arrive.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contact" class="page">
+            <div class="section-header">
+                <h2>Get In Touch</h2>
+                <p>Ready to make your event magical? Contact us today for a free consultation!</p>
+            </div>
+
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon">👤</div>
+                    <h3>Janesha Bachen</h3>
+                    <p>Event Decoration Specialist</p>
+                    <p>Your dedicated partner in creating magical celebrations</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">📱</div>
+                    <h3>Phone</h3>
+                    <p><strong>0732953101</strong></p>
+                    <p>Call or WhatsApp for immediate assistance</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">✉️</div>
+                    <h3>Email</h3>
+                    <p><strong>Janesha25pather@gmail.com</strong></p>
+                    <p>Send us your event details and questions</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3>Location</h3>
+                    <p><strong>4 UBA Road</strong></p>
+                    <p>Maidstone Village, Tongaat</p>
+                    <p>KwaZulu-Natal, 4400</p>
+                    <p>South Africa</p>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="section-header">
+                <h2>Let's Start Planning!</h2>
+                <p>Contact us today to discuss your event and receive a personalized quote</p>
+            </div>
+
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>🎯 Free Consultation</h3>
+                    <p>We offer complimentary consultations to discuss your event vision, theme preferences, and budget. This helps us create the perfect plan for your special day.</p>
+                    
+                    <h3>📅 Flexible Scheduling</h3>
+                    <p>We understand that planning events can be stressful, so we work around your schedule to make the process as convenient as possible.</p>
+                    
+                    <h3>💰 Competitive Pricing</h3>
+                    <p>Quality doesn't have to break the bank. We offer competitive pricing with packages to suit various budgets without compromising on quality.</p>
+                    
+                    <h3>⚡ Quick Response</h3>
+                    <p>We pride ourselves on prompt communication. Expect to hear back from us within 24 hours of your initial contact.</p>
+
+                    <div style="margin-top: 2rem; text-align: center;">
+                        <a href="https://wa.me/27732953101?text=Hi! I'm interested in your decoration services for my event." class="cta-button">
+                            WhatsApp Us Now! 💬
+                        </a>
+                    </div>
+                </div>
+                <div class="about-image">
+                    📞
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/27732953101?text=Hi! I'm interested in your decoration services for my event." class="whatsapp-float" target="_blank">
+        💬
+    </a>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update active nav link
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => link.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Close mobile menu if open
+            document.getElementById('navContainer').classList.remove('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function toggleMobileMenu() {
+            const navContainer = document.getElementById('navContainer');
+            navContainer.classList.toggle('active');
+        }
+
+        // Smooth scroll for internal links
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add smooth scrolling animation
+            const style = document.createElement('style');
+            style.textContent = `
+                html {
+                    scroll-behavior: smooth;
+                }
+            `;
+            document.head.appendChild(style);
+
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.style.background = 'rgba(255, 255, 255, 0.99)';
+                    header.style.boxShadow = '0 2px 24px rgba(0, 0, 0, 0.12)';
+                } else {
+                    header.style.background = 'rgba(255, 255, 255, 0.98)';
+                    header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+                }
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                const navContainer = document.getElementById('navContainer');
+                const mobileToggle = document.querySelector('.mobile-menu-toggle');
+                
+                if (!navContainer.contains(e.target) && !mobileToggle.contains(e.target)) {
+                    navContainer.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
